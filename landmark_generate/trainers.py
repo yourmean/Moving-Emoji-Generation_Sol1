@@ -57,6 +57,8 @@ class Trainer(object):
         self.use_cuda = use_cuda
         self.use_infogan = use_infogan
 
+        self.device = torch.device("cuda:0" if self.use_cuda else "cpu")
+
         self.image_enumerator = None
         self.video_enumerator = None
 
@@ -98,6 +100,35 @@ class Trainer(object):
 
         return b
 
+    #학습을 위해(이미지끼리 비교를 해야하므로) 좌표에서 랜드마크 이미지로 변환
+    def coord_to_arr(self,fake_batch):
+        landmark_images = []
+        for batch in fake_batch:
+            img = np.zeros((64,64))
+            for coord in batch.reshape(68,2):
+                x = int(coord[0]*32 + 32)
+                y = int(coord[1]*32 + 32)
+                img[y,x] = 1
+            landmark_images.append(img)
+        length = len(fake_batch)
+        return torch.tensor(landmark_images, dtype = torch.float32).view(length,1,64,64)
+
+    def coord_to_arr_video(self,fake_batch):
+        landmark_videos = []
+        for batch in fake_batch:
+            landmark_images = []
+            for t in batch:
+                img = np.zeros((64,64))
+                for coord in t.reshape(68,2):
+                    x = int(coord[0]*32 + 32)
+                    y = int(coord[1]*32 + 32)
+                    img[y,x] = 1
+                landmark_images.append(img)
+            landmark_videos.append(landmark_images)
+        length = len(fake_batch)
+        video_length_temp = len(batch)
+        return torch.tensor(landmark_videos, dtype = torch.float32).view(length, 1,video_length_temp, 64,64)
+
     def train_discriminator(self, discriminator, sample_true, sample_fake, opt, batch_size, use_categories):
         opt.zero_grad()
 
@@ -107,6 +138,14 @@ class Trainer(object):
         # util.show_batch(batch.data)
 
         fake_batch, generated_categories = sample_fake(batch_size)
+
+        if fake_batch.dim() == 2:
+            fake_batch = self.coord_to_arr(fake_batch)
+        else:
+            fake_batch = self.coord_to_arr_video(fake_batch)
+
+        # fake_batch.cuda()
+        fake_batch = fake_batch.to(self.device)
 
         real_labels, real_categorical = discriminator(batch)
         fake_labels, fake_categorical = discriminator(fake_batch.detach())
@@ -137,6 +176,9 @@ class Trainer(object):
         # train on images
 
         fake_batch, generated_categories = sample_fake_images(self.image_batch_size)
+        fake_batch = self.coord_to_arr(fake_batch)
+        # fake_batch.cuda()
+        fake_batch = fake_batch.to(self.device)
         fake_labels, fake_categorical = image_discriminator(fake_batch)
         all_ones = self.ones_like(fake_labels)
 
@@ -145,6 +187,9 @@ class Trainer(object):
         # train on videos
 
         fake_batch, generated_categories = sample_fake_videos(self.video_batch_size)
+        fake_batch = self.coord_to_arr_video(fake_batch)
+        # fake_batch.cuda()
+        fake_batch = fake_batch.to(self.device)
         fake_labels, fake_categorical = video_discriminator(fake_batch)
         all_ones = self.ones_like(fake_labels)
 

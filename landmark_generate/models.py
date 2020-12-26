@@ -210,8 +210,8 @@ class VideoGenerator(nn.Module):
             nn.ReLU(True),
 
             #to get fixed dimenstions landmark coordinates
-            nn.Conv2d(self.n_channels, 140, 3, 1, 1, bias=False),
-            nn.BatchNorm2d(140),
+            nn.Conv2d(self.n_channels, 136, 3, 1, 1, bias=False),
+            nn.BatchNorm2d(136),
             nn.Tanh(),
             nn.AdaptiveAvgPool2d(1)
         )
@@ -276,14 +276,14 @@ class VideoGenerator(nn.Module):
         z, z_category_labels = self.sample_z_video(num_samples, video_len)
 
         h = self.main(z.view(z.size(0), z.size(1), 1, 1))
-        h = h.view(int(h.size(0) / video_len), video_len, self.n_channels, h.size(3))
+        h = h.view(int(h.size(0) / video_len), video_len, 136)
 
         z_category_labels = torch.from_numpy(z_category_labels)
 
         if torch.cuda.is_available():
             z_category_labels = z_category_labels.cuda()
 
-        h = h.permute(0, 2, 1, 3)
+        # h = h.permute(0, 2, 1, 3)
         return h, Variable(z_category_labels, requires_grad=False)
 
     def sample_images(self, num_samples):
@@ -293,7 +293,7 @@ class VideoGenerator(nn.Module):
         z = z[j, ::]
         z = z.view(z.size(0), z.size(1), 1, 1)
         h = self.main(z)
-        h = h.view(h.size(0), 140, 1)
+        h = h.view(h.size(0), 136)
 
         return h, None
 
@@ -302,3 +302,25 @@ class VideoGenerator(nn.Module):
 
     def get_iteration_noise(self, num_samples):
         return Variable(T.FloatTensor(num_samples, self.dim_z_motion).normal_())
+
+# generator = VideoGenerator(1,50,4,10,16)
+#
+# z , z_categ = generator.sample_z_video(2, 16)
+#
+# h = generator.main(z.view(z.size(0), z.size(1), 1, 1))
+#
+# h.shape
+# h = h.view(int(h.size(0)/16),16,140)
+# h.shape
+#
+# z, z_categ = generator.sample_z_video(2*16*2)
+# j = np.sort(np.random.choice(z.size(0), 2, replace=False)).astype(np.int64)
+# z = z[j,::]
+# z = z.view(z.size(0), z.size(1), 1, 1)
+# z.shape
+# h = generator.main(z)
+# h.shape
+# h = h.view(h.size(0), 140)
+# h
+#
+# generator.sample_videos(2).
