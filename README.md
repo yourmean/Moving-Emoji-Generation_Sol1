@@ -1,4 +1,5 @@
-# tobigs conference solution 1
+# tobigs conference conditional video generation - team sol1: landmark generation
+
 
 ### Convention
 1. 기능별로 폴더를 분류하고 관련 소스는 해당 폴더에 정리하기
