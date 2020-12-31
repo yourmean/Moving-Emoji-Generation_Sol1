@@ -1,4 +1,5 @@
-# tobigs conference conditional video generation - team sol1: landmark generation
+# tobigs conference conditional video generation
+## team sol1: landmark generation
 
 
 ### Convention
