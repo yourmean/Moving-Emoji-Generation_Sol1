@@ -40,10 +40,10 @@ if __name__ == "__main__":
 		with open(file_list[i], 'r') as f:
 			json_data = json.load(f)
 		landmark2 = json_data
-		doMorphing(image1, landmark2, num, args.save_image_path)
+		doMorphing(image1, landmark2, i, args.save_image_path)
 
 	
-img_list = os.listdir((args.save_image_path)
+img_list = os.listdir(args.save_image_path)
 img_file_to_gif(img_list, args.output)
 
 print('complete')
