@@ -1,7 +1,6 @@
 Face Morphing
 ===================
 
-refernce : https://github.com/Azmarie/Face-Morphing.git
 Requirements
 -------------
 ```
@@ -12,6 +11,6 @@ Pillow
 skimage
 dlib
 ```
-
-Getting Started
 -------------
+
+refernce : https://github.com/Azmarie/Face-Morphing.git
