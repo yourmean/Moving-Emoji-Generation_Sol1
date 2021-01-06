@@ -38,7 +38,7 @@ def landmark_detect(vid_path, vid_save_name):
             ret, image_o = vid_in.read()
 
            # resize the video
-            image = cv2.resize(image_o, dsize=(480, 480), interpolation=cv2.INTER_AREA)
+            image = cv2.resize(image_o, dsize=(1024, 1024), interpolation=cv2.INTER_AREA)
             img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
             # Get faces (up-sampling=1)
@@ -83,31 +83,43 @@ def landmark_detect(vid_path, vid_save_name):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--video_path" ,required= False, default = "vid_test", help="video path")
+    parser.add_argument("--data_path" ,required= False, default = "dataset", help="video path")
     parser.add_argument("--save_path" ,required= False, default = "result", help="save video path")
     args = parser.parse_args()
 
-    video_path = args.video_path
-    dataset_list = os.listdir(video_path)
+    video_path = args.data_path
+    num_list = os.listdir(video_path)
 
+    # s_list = ['session0', 'session1']
 
-    for data_name in dataset_list:
+    c_list = ['anger', 'disgust', 'fear', 'happiness', 'neutral', 'sadness', 'surprise']
 
-        vid_list = os.listdir(os.path.join(video_path,data_name))
+    video_list = []
 
-        save_path = os.path.join(args.save_path,data_name)
+    for num in num_list:
+        s_list = os.listdir(os.path.join(video_path,num,num)) 
 
-        if not os.path.exists(save_path):
-            os.makedirs(save_path)
+        for session_num in s_list:
+            class_list = os.listdir(os.path.join(video_path,num,num,session_num)) 
 
-        if len(vid_list)==0:
-            assert False, "no video"
+            for c in class_list:
+                file_list = os.listdir(os.path.join(video_path,num,num,session_num, c))
+                for f in file_list:
+                    if f.endswith(".avi"):
+                        video_list.append(os.path.join(video_path, num, num, session_num, c, f))
 
-        for vid_name in vid_list:
-            vid_path =  os.path.join(video_path,data_name,vid_name)
-            temp = vid_name.split('.') # 저장할 image name
-            vid_save_name = temp[0] + '.json'
-            all_save_path = os.path.join(save_path, vid_save_name)
-            
-            landmark_detect(vid_path, all_save_path)
+    save_path = args.save_path
+
+    for c in c_list:
+        save_file_path = os.path.join(save_path,c)
+        if not os.path.exists(save_file_path):
+            os.makedirs(save_file_path)
+
+    for vid in video_list:
+        for c in c_list:
+            if c in vid:
+                s_path = os.path.join(save_path,c) 
+                file_name = c + str(len(os.listdir(s_path))+1) + '.json'
+        all_save_path = os.path.join(s_path,file_name)
+        landmark_detect(vid, all_save_path)
 
