@@ -90,23 +90,21 @@ if __name__ == "__main__":
     video_path = args.data_path
     num_list = os.listdir(video_path)
 
-    # s_list = ['session0', 'session1']
-
     c_list = ['anger', 'disgust', 'fear', 'happiness', 'neutral', 'sadness', 'surprise']
 
     video_list = []
 
     for num in num_list:
-        s_list = os.listdir(os.path.join(video_path,num,num)) 
+        class_list = os.listdir(os.path.join(video_path,num,num)) 
 
-        for session_num in s_list:
-            class_list = os.listdir(os.path.join(video_path,num,num,session_num)) 
+        for c in class_list:
+            take_list = os.listdir(os.path.join(video_path,num,num,c)) 
 
-            for c in class_list:
-                file_list = os.listdir(os.path.join(video_path,num,num,session_num, c))
+            for t in take_list:
+                file_list = os.listdir(os.path.join(video_path,num,num,c, t))
                 for f in file_list:
                     if f.endswith(".avi"):
-                        video_list.append(os.path.join(video_path, num, num, session_num, c, f))
+                        video_list.append(os.path.join(video_path, num, num, c, t, f))
 
     save_path = args.save_path
 
