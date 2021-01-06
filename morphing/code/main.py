@@ -43,13 +43,13 @@ if __name__ == "__main__":
 		doMorphing(image1, landmark2, i, args.save_image_path)
 
 	
-img_list = os.listdir(args.save_image_path)
-img_file_to_gif(img_list, args.output)
+	img_list = os.listdir(args.save_image_path)
+	img_file_to_gif(img_list, args.output)
 
-print('complete')
+	print('complete')
 
-#### sample image delete 
-for img_file in img_list:
-    if os.path.exists(img_file):
-        os.remove(img_file)
-print('image file delete complete')
+	#### sample image delete 
+	for img_file in img_list:
+		if os.path.exists(img_file):
+			os.remove(img_file)
+	print('image file delete complete')
