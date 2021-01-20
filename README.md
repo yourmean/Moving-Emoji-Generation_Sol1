@@ -1,7 +1,11 @@
 # Tobigticon
 ## team sol1: conditional video generation - landmark generation
 
-이미지에서 비디오를 생성하기 위한 Landmark Generation 관련 코드 및 자료를 모아 놓은 레포입니다. <br>
+- landmark detection
+- landmark generation
+- face warping
+- face morphing
+
 전체 프로젝트 코드는 [여기](https://github.com/Tobigs-team/Moving-Emoji-Generation)에서 확인하실 수 있습니다.
 
 ## Requirements
@@ -18,14 +22,6 @@ We have tested on:
 - Ninja 1.10.0
 - glob2 0.7
 ```
-
-
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105188157-f0d9b480-5b76-11eb-81a9-2a3f7f6f4660.jpg"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105188159-f1724b00-5b76-11eb-93a0-2947a18abd4c.jpg"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105188161-f20ae180-5b76-11eb-9391-efaacc4ab5b6.jpg"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105188166-f2a37800-5b76-11eb-95e2-45e132ee2f59.jpg"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105188167-f2a37800-5b76-11eb-829f-cb8e207c35e4.jpg"></p>
-
 
 ## Contributor
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
