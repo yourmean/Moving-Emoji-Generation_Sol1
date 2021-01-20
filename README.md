@@ -1,7 +1,7 @@
 # Tobigticon : Create Your Own Moving Emoticons Based on Image2Video
 ## team sol1: conditional video generation - landmark generation
 
-이미지에서 비디오를 생성하기 위한 Landmark Generation 관련 코드 및 자료를 모아 놓은 레포입니다.
+이미지에서 비디오를 생성하기 위한 Landmark Generation 관련 코드 및 자료를 모아 놓은 레포입니다. <>
 전체 프로젝트 코드는 [여기](https://github.com/Tobigs-team/Moving-Emoji-Generation)에서 확인하실 수 있습니다.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/55529646/105188157-f0d9b480-5b76-11eb-81a9-2a3f7f6f4660.jpg"></p>
