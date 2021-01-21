@@ -13,4 +13,4 @@ dlib
 ```
 -------------
 
-refernce : https://github.com/Azmarie/Face-Morphing.git
+reference : https://github.com/Azmarie/Face-Morphing.git
