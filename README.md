@@ -6,7 +6,7 @@
 - face warping
 - face morphing
 
-전체 프로젝트 코드는 [여기](https://github.com/Tobigs-team/Moving-Emoji-Generation)에서 확인하실 수 있습니다.
+전체 프로젝트 코드는 [여기](https://github.com/Tobigs-team/EmoGET_tobigticon)에서 확인하실 수 있습니다.
 
 ## Requirements
 We have tested on:
