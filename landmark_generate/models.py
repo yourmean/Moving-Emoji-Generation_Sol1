@@ -209,7 +209,7 @@ class VideoGenerator(nn.Module):
             nn.ConvTranspose2d(ngf, self.n_channels, 4, 2, 1, bias=False),
             nn.ReLU(True),
 
-            #to get fixed dimenstions landmark coordinates
+            #to get fixed dimenstions landmark coordinate
             nn.Conv2d(self.n_channels, 136, 3, 1, 1, bias=False),
             nn.BatchNorm2d(136),
             nn.Tanh(),
