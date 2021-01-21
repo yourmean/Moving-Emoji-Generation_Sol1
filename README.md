@@ -32,7 +32,7 @@ We have tested on:
   <tr>
     <td align="center"><a href="https://github.com/yourmean"><img src="https://user-images.githubusercontent.com/41895063/104711276-7cf96f80-5764-11eb-8473-99c5c0dc8a8a.png" width="150" height="150"><br /><sub><b>YuMin Lee</b></sub></td>
     <td align="center"><a href="https://github.com/lilly9117"><img src="https://user-images.githubusercontent.com/41895063/104711018-29872180-5764-11eb-9858-53c5f4cc26e4.png" width="150" height="150"><br /><sub><b>Hyebin Choi</b></sub></td>
-    <td align="center"><a href="https://github.com/shkim960520"><img src="https://user-images.githubusercontent.com/55529646/104719176-6d335880-576f-11eb-849f-4d6756824d68.jpg" width="150" height="150"><br /><sub><b>SangHyun Kim</b></sub></td>
+    <td align="center"><a href="https://github.com/shkim960520"><img src="https://user-images.githubusercontent.com/55529646/104719176-6d335880-576f-11eb-849f-4d6756824d68.jpg" width="150" height="150"><br /><sub><b>SangHyeon Kim</b></sub></td>
     <td align="center"><a href="https://github.com/Yu-Jin22"><img src="https://user-images.githubusercontent.com/41895063/104711416-afa36800-5764-11eb-85c1-1a9ad50033b7.png" width="150" height="150"><br /><sub><b>YuJin Han</b></sub></td>
   </tr>
 </table>
