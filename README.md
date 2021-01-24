@@ -1,11 +1,27 @@
 # Tobigticon
 ## team sol1: conditional video generation - landmark generation
 
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105634251-7d9ab000-5ea0-11eb-9018-2a2f24dda65a.jpg" width="750" height="450"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105634257-82f7fa80-5ea0-11eb-9e7c-acb9f9c9a385.jpg" width="750" height="450"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105634259-84c1be00-5ea0-11eb-8ccd-57cc3f0517c6.jpg" width="750" height="450"></p>
-<p align="center"><img src="https://user-images.githubusercontent.com/55529646/105634260-855a5480-5ea0-11eb-9a26-b3d724c87984.jpg" width="750" height="450"></p>
-<br>
+- landmark detection
+- landmark generation
+- face warping
+- face morphing
+
+전체 프로젝트 코드는 [여기](https://github.com/Tobigs-team/EmoGET_tobigticon)에서 확인하실 수 있습니다.
+
+## Requirements
+We have tested on:
+``` 
+- CUDA 11.0
+- python 3.8.5
+- pytorch 1.7.1
+- numpy 1.19.2
+- opencv-python  4.5.1
+- dlib 19.21.1
+- scikit-learn 0.24.0
+- Pillow 8.1.0
+- Ninja 1.10.0
+- glob2 0.7
+```
 
 ## Contributor
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -20,3 +36,6 @@
     <td align="center"><a href="https://github.com/Yu-Jin22"><img src="https://user-images.githubusercontent.com/41895063/104711416-afa36800-5764-11eb-85c1-1a9ad50033b7.png" width="150" height="150"><br /><sub><b>YuJin Han</b></sub></td>
   </tr>
 </table>
+
+## License
+MIT
